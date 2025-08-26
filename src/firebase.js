@@ -1,6 +1,7 @@
 // Import Firebase core SDK
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,6 +17,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
+// Initialize Firestore
+const db = getFirestore(app);
+
 // ✅ Analytics (safe check: only in browser)
 let analytics;
 if (typeof window !== "undefined" && firebaseConfig.measurementId) {
@@ -25,5 +29,5 @@ if (typeof window !== "undefined" && firebaseConfig.measurementId) {
 // ✅ Default export
 export default app;
 
-// Optional named export
-export { analytics };
+// Optional named exports
+export { db, analytics };
